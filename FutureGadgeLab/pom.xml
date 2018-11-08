@@ -37,7 +37,12 @@
       <artifactId>resteasy-client</artifactId>
       <version>3.1.4.Final</version>
     </dependency>
-
+    <!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->
+    <dependency>
+      <groupId>org.hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+      <version>2.4.1</version>
+    </dependency>
     <!--unit test-->
       <dependency>
         <groupId>junit</groupId>
@@ -89,6 +94,23 @@
             <server>fgl</server>
             <path></path>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.flywaydb</groupId>
+          <artifactId>flyway-maven-plugin</artifactId>
+          <version>5.2.1</version>
+          <configuration>
+            <url>jdbc:hsqldb:hsql://localhost/fgldb</url>
+            <user>sa</user>
+            <validateOnMigrate>false</validateOnMigrate>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.hsqldb</groupId>
+              <artifactId>hsqldb</artifactId>
+              <version>2.4.1</version>
+            </dependency>
+          </dependencies>
         </plugin>
       </plugins>
     </pluginManagement>
